@@ -26,4 +26,3 @@ If you want to run the player from the source code or build the installer yourse
 Make sure you have Python installed and install the required dependencies:
 ```bash
 pip install customtkinter pynput mutagen pillow
-# Add any other specific libraries your main player uses
