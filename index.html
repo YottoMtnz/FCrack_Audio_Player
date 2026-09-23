@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="description" content="F.Crack Player — reproductor de audio para Windows con interfaz neón, favoritos, ecualizador, búsqueda rápida, arrastrar y soltar y modo portable." />
+  <meta name="author" content="Fraudy Martinez Madruga" />
+  <meta property="og:title" content="F.Crack Player" />
+  <meta property="og:description" content="Tu música local, sin complicaciones. Reproductor de audio para Windows con diseño neón y controles avanzados." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yottomtnz.github.io/FCrack_Audio_Player/" />
+  <meta property="og:image" content="https://yottomtnz.github.io/FCrack_Audio_Player/assets/default_album.png" />
+  <title>F.Crack Player — Audio Player for Windows</title>
+  <link rel="icon" href="assets/icon.ico" />
+  <style>
+    :root{
+      color-scheme:dark;
+      --bg:#07080b;--bg2:#0d0f15;--card:#12151d;--card2:#171b24;--line:#252b37;
+      --text:#f4f7fb;--muted:#9da7b7;--cyan:#00a8ff;--green:#1ed760;--purple:#a855f7;
+      --accent:var(--cyan);--shadow:0 30px 80px rgba(0,0,0,.42)
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:
+      radial-gradient(900px 520px at 12% -10%,rgba(0,168,255,.18),transparent 62%),
+      radial-gradient(900px 550px at 100% 20%,rgba(168,85,247,.12),transparent 64%),
+      linear-gradient(180deg,var(--bg),#090b10 45%,#07080b);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+    nav{position:sticky;top:0;z-index:20;background:rgba(7,8,11,.74);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}.brand img{width:38px;height:38px;border-radius:10px;box-shadow:0 0 30px rgba(0,168,255,.18)}
+    .navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:#fff}.navright{display:flex;align-items:center;gap:10px}.lang{border:1px solid var(--line);background:#10131a;border-radius:999px;padding:5px;display:flex}.lang button{border:0;background:transparent;color:var(--muted);padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:800}.lang button.active{background:#202633;color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:13px;padding:12px 17px;font-weight:800;border:1px solid var(--line);transition:.2s ease;cursor:pointer}.btn:hover{transform:translateY(-1px);border-color:#394253}.btn.primary{background:linear-gradient(135deg,#008fd9,var(--cyan));color:#001018;border:0;box-shadow:0 14px 38px rgba(0,168,255,.24)}.btn.ghost{background:rgba(255,255,255,.035)}
+    .hero{padding:86px 0 72px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(0,168,255,.22);background:rgba(0,168,255,.08);color:#8bdcff;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.09em}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}h1{font-size:clamp(48px,7vw,82px);line-height:.95;margin:18px 0 20px;letter-spacing:-.055em}.gradient{background:linear-gradient(95deg,#fff 5%,#8bdcff 50%,#d4b7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:19px;color:#b4bdca;max-width:650px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:29px}.tiny{margin-top:16px;color:#778293;font-size:13px}.tiny strong{color:#a9b5c5}
+    .app-shell{position:relative;background:linear-gradient(180deg,#17191f,#101116);border:1px solid #303641;border-radius:28px;padding:13px;box-shadow:var(--shadow),0 0 0 1px rgba(0,168,255,.03) inset}.app-shell:before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;background:linear-gradient(130deg,rgba(0,168,255,.9),transparent 42%,rgba(168,85,247,.75));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}.app{background:#111216;border-radius:19px;border:1px solid #242830;overflow:hidden}.app-top{height:46px;padding:0 15px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #232730}.app-title{font-size:13px;font-weight:800}.spacer{flex:1}.pill{font-size:11px;background:#272b34;color:#c4ccd7;padding:5px 8px;border-radius:9px}.player-main{padding:16px}.visual{display:grid;grid-template-columns:1fr 128px 1fr;align-items:center;background:#1a1c22;border-radius:15px;padding:13px}.bars{height:100px;display:flex;gap:5px;align-items:flex-end;justify-content:center}.bars i{display:block;width:5px;border-radius:4px 4px 1px 1px;background:var(--accent);height:var(--h);animation:bounce 1.25s ease-in-out infinite alternate;animation-delay:var(--d);opacity:.9}@keyframes bounce{to{height:calc(var(--h) * .35 + 7px)}}.disc{width:112px;height:112px;border-radius:50%;object-fit:cover;animation:spin 8s linear infinite;box-shadow:0 12px 30px rgba(0,0,0,.4)}@keyframes spin{to{transform:rotate(360deg)}}.track{text-align:center;padding:14px 0 8px}.track b{display:block;font-size:16px}.track span{color:#919aa8;font-size:12px}.progress{display:flex;align-items:center;gap:9px;color:#7d8795;font-size:10px}.rail{height:5px;background:#2b303a;border-radius:99px;flex:1;overflow:hidden}.rail:before{content:"";display:block;height:100%;width:57%;background:var(--accent)}.controls{display:flex;justify-content:center;align-items:center;gap:12px;padding:13px 0}.round{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#cad1db}.play{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#051018;font-size:19px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px}.select,.volume{background:#232730;color:#b6bfcc;border-radius:10px;font-size:11px;padding:7px 10px}.search{margin-top:10px;background:#1a1d23;border:1px solid #262b34;border-radius:10px;color:#737e8e;padding:9px 11px;font-size:11px}.songs{margin-top:8px;background:#0c0d10;border-radius:11px;padding:7px}.song{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;color:#858f9e;font-size:11px}.song.on{color:var(--accent);background:#151820}.song em{font-style:normal;margin-left:auto;color:#596273}.preview-note{text-align:center;color:#697383;font-size:11px;margin-top:12px}
+    section{padding:82px 0}.section-head{max-width:720px;margin-bottom:34px}.kicker{color:#74d0ff;text-transform:uppercase;letter-spacing:.12em;font-weight:900;font-size:11px}h2{font-size:clamp(32px,4.5vw,52px);line-height:1.04;letter-spacing:-.04em;margin:9px 0 14px}.sub{color:var(--muted);font-size:17px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(180deg,rgba(22,26,35,.86),rgba(15,18,25,.88));border:1px solid #252b35;border-radius:20px;padding:23px;min-height:190px}.icon{width:42px;height:42px;border-radius:12px;background:rgba(0,168,255,.11);display:grid;place-items:center;font-size:21px;margin-bottom:18px}.card h3{margin:0 0 9px;font-size:17px}.card p{margin:0;color:#96a0ae;font-size:14px}.card strong{color:#dfe5ee}.accent2 .icon{background:rgba(30,215,96,.1)}.accent3 .icon{background:rgba(168,85,247,.12)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{border:1px solid #252b35;border-radius:24px;padding:28px;background:#0f1218}.panel h3{font-size:23px;margin:0 0 16px}.checks{display:grid;gap:12px}.check{display:flex;align-items:flex-start;gap:10px;color:#a5afbd}.check b{color:#e9edf3}.check:before{content:"✓";flex:0 0 23px;height:23px;border-radius:50%;display:grid;place-items:center;background:rgba(30,215,96,.1);color:var(--green);font-weight:900}.formats{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.tag{padding:8px 11px;border-radius:10px;background:#181c24;border:1px solid #272d38;color:#bec7d2;font-size:12px;font-weight:800}
+    .privacy{position:relative;overflow:hidden}.privacy:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(30,215,96,.07);filter:blur(20px);right:-140px;bottom:-180px}.download{padding:42px;background:linear-gradient(135deg,rgba(0,168,255,.12),rgba(168,85,247,.10));border:1px solid #2a3340;border-radius:28px;display:flex;align-items:center;gap:30px;justify-content:space-between}.download h2{font-size:38px;margin:0 0 9px}.download p{margin:0;color:#a4afbd}.download .btn{white-space:nowrap;padding:15px 22px}
+    footer{padding:32px 0 42px;border-top:1px solid rgba(255,255,255,.06);color:#758090;font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot a:hover{color:#fff}.es,.en{display:none}body[data-lang="es"] .es,body[data-lang="en"] .en{display:initial}body[data-lang="es"] div.es,body[data-lang="en"] div.en{display:block}
+    @media(max-width:900px){.navlinks{display:none}.hero-grid,.split{grid-template-columns:1fr}.hero-grid{gap:40px}.hero{padding-top:58px}.app-shell{max-width:600px;margin:auto}.grid{grid-template-columns:1fr 1fr}.download{align-items:flex-start;flex-direction:column}.download .btn{width:100%}}
+    @media(max-width:620px){.wrap{width:min(100% - 24px,1180px)}.navin{height:64px}.brand span{display:none}.navright .btn{display:none}.hero{padding:48px 0 52px}h1{font-size:48px}.lead{font-size:16px}.grid{grid-template-columns:1fr}.visual{grid-template-columns:1fr 100px 1fr;padding:10px}.disc{width:90px;height:90px}.bars{height:84px}.bars i:nth-child(n+9){display:none}.download{padding:27px}.download h2{font-size:31px}section{padding:62px 0}}
+  </style>
+</head>
+<body data-lang="es">
+<nav>
+  <div class="wrap navin">
+    <a class="brand" href="#top"><img src="assets/icon.png" alt="F.Crack Player icon"><span>F.Crack Player</span></a>
+    <div class="navlinks">
+      <a href="#features"><span class="es">Funciones</span><span class="en">Features</span></a>
+      <a href="#install"><span class="es">Instalación</span><span class="en">Installation</span></a>
+      <a href="#privacy"><span class="es">Privacidad</span><span class="en">Privacy</span></a>
+    </div>
+    <div class="navright">
+      <div class="lang" aria-label="Language selector"><button id="esBtn" class="active">ES</button><button id="enBtn">EN</button></div>
+      <a class="btn primary" href="https://drive.google.com/file/d/1AJKtcF8FnFnocJlscRWS5nE4NRWx27hz/view?usp=drive_link" target="_blank" rel="noopener"><span class="es">Descargar</span><span class="en">Download</span> ↓</a>
+    </div>
+  </div>
+</nav>
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span><span class="es">Reproductor de audio para Windows</span><span class="en">Audio player for Windows</span></div>
+        <h1><span class="gradient">F.Crack Player</span></h1>
+        <p class="lead es">Tu biblioteca local, con una interfaz oscura de estilo neón, búsqueda instantánea, favoritos, ecualizador, controles multimedia y una experiencia pensada para sentirse rápida y personal.</p>
+        <p class="lead en">Your local music library with a dark neon interface, instant search, favorites, equalizer presets, media controls, and a fast, personal desktop experience.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://drive.google.com/file/d/1AJKtcF8FnFnocJlscRWS5nE4NRWx27hz/view?usp=drive_link" target="_blank" rel="noopener">⬇ <span class="es">Descargar para Windows</span><span class="en">Download for Windows</span></a>
+          <a class="btn ghost" href="https://github.com/YottoMtnz/FCrack_Audio_Player" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="tiny es"><strong>Instalación completa o portable.</strong> El instalador permite elegir cómo quieres usar F.Crack Player.</div>
+        <div class="tiny en"><strong>Full install or portable mode.</strong> The installer lets you choose how you want to use F.Crack Player.</div>
+      </div>
+      <div>
+        <div class="app-shell" aria-label="F.Crack Player interface representation">
+          <div class="app">
+            <div class="app-top"><img src="assets/icon.png" alt="" width="22" height="22"><div class="app-title">F.Crack Player</div><div class="spacer"></div><div class="pill">⚙</div><div class="pill">💙 Fav</div></div>
+            <div class="player-main">
+              <div class="visual">
+                <div class="bars"> <i style="--h:35%;--d:-.2s"></i><i style="--h:72%;--d:-.8s"></i><i style="--h:48%;--d:-.4s"></i><i style="--h:82%;--d:-1s"></i><i style="--h:56%;--d:-.6s"></i><i style="--h:91%;--d:-.1s"></i><i style="--h:62%;--d:-.7s"></i><i style="--h:43%;--d:-.3s"></i><i style="--h:70%;--d:-.9s"></i><i style="--h:52%;--d:-.5s"></i></div>
+                <img class="disc" src="assets/default_album.png" alt="Vinyl artwork">
+                <div class="bars"> <i style="--h:52%;--d:-.5s"></i><i style="--h:70%;--d:-.9s"></i><i style="--h:43%;--d:-.3s"></i><i style="--h:62%;--d:-.7s"></i><i style="--h:91%;--d:-.1s"></i><i style="--h:56%;--d:-.6s"></i><i style="--h:82%;--d:-1s"></i><i style="--h:48%;--d:-.4s"></i><i style="--h:72%;--d:-.8s"></i><i style="--h:35%;--d:-.2s"></i></div>
+              </div>
+              <div class="track"><b>Midnight Drive</b><span>Local Library</span></div>
+              <div class="progress"><span>02:14</span><div class="rail"></div><span>03:56</span></div>
+              <div class="controls"><div class="round">🔀</div><div class="round">⏮</div><div class="play">▶</div><div class="round">⏭</div><div class="round">🔁</div></div>
+              <div class="toolbar"><div class="select">Flat ▾</div><div class="volume">🔊 70%</div></div>
+              <div class="search">🔍 <span class="es">Búsqueda rápida</span><span class="en">Quick search</span></div>
+              <div class="songs"><div class="song on">♪ Midnight Drive <em>01</em></div><div class="song">♪ City Lights <em>02</em></div><div class="song">♪ Neon Rain <em>03</em></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-note es">Representación web inspirada en la interfaz real de escritorio.</div><div class="preview-note en">Web representation inspired by the real desktop interface.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker es">Diseñado para tu música</div><div class="kicker en">Built for your music</div><h2 class="es">Más que darle a Play.</h2><h2 class="en">More than pressing Play.</h2><p class="sub es">F.Crack Player combina biblioteca local, control rápido y personalización visual sin convertir el reproductor en una suite pesada.</p><p class="sub en">F.Crack Player combines a local library, quick control, and visual personalization without turning the player into a bloated suite.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">🎵</div><h3 class="es">Arrastrar y soltar</h3><h3 class="en">Drag & drop</h3><p class="es">Añade archivos o carpetas completas. Puedes crear una lista nueva o sumar música a la actual.</p><p class="en">Drop individual files or entire folders. Start a fresh list or append music to the current one.</p></article>
+        <article class="card accent2"><div class="icon">💙</div><h3 class="es">Favoritos locales</h3><h3 class="en">Local favorites</h3><p class="es">Marca canciones con un toque y accede a una vista dedicada de favoritos.</p><p class="en">Favorite songs with one click and jump into a dedicated favorites view.</p></article>
+        <article class="card accent3"><div class="icon">🔎</div><h3 class="es">Búsqueda instantánea</h3><h3 class="en">Instant search</h3><p class="es">Filtra rápidamente la lista por nombre, incluso con títulos que contienen guiones, puntos o guiones bajos.</p><p class="en">Quickly filter by filename, including titles that use dashes, dots, or underscores.</p></article>
+        <article class="card"><div class="icon">🎚️</div><h3 class="es">9 perfiles de ecualización</h3><h3 class="en">9 equalizer presets</h3><p class="es">Flat, Bass & Treble, Club, Dance, Full Bass, Headphones, Live, Pop y Rock.</p><p class="en">Flat, Bass & Treble, Club, Dance, Full Bass, Headphones, Live, Pop, and Rock.</p></article>
+        <article class="card accent2"><div class="icon">⌨️</div><h3 class="es">Teclas multimedia</h3><h3 class="en">Media keys</h3><p class="es">Play/Pause, pista siguiente y pista anterior responden a las teclas multimedia del teclado.</p><p class="en">Play/Pause, Next, and Previous respond to your keyboard's media keys.</p></article>
+        <article class="card accent3"><div class="icon">✨</div><h3 class="es">Estilo configurable</h3><h3 class="en">Customizable style</h3><p class="es">Elige colores de contorno, interfaz y visualizador por separado, además de transparencia y lenguaje ES/EN.</p><p class="en">Choose border, interface, and visualizer colors independently, plus transparency and ES/EN language.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div class="panel"><div class="kicker es">Reproducción</div><div class="kicker en">Playback</div><h3 class="es">Controles que esperas, con extras útiles.</h3><h3 class="en">The controls you expect, plus useful extras.</h3><div class="checks">
+        <div class="check"><span class="es"><b>Aleatorio y repetición</b> con modos desactivado, repetir lista y repetir una pista.</span><span class="en"><b>Shuffle and repeat</b> with off, repeat-all, and repeat-one modes.</span></div>
+        <div class="check"><span class="es"><b>Portada y artista</b> leídos desde los metadatos cuando están disponibles.</span><span class="en"><b>Artwork and artist</b> loaded from metadata when available.</span></div>
+        <div class="check"><span class="es"><b>Volumen ampliado</b> con control de 0 a 150%.</span><span class="en"><b>Extended volume</b> with a 0–150% control range.</span></div>
+        <div class="check"><span class="es"><b>Continuidad de sesión:</b> conserva lista, pista, posición, volumen, EQ y preferencias visuales.</span><span class="en"><b>Session continuity:</b> remembers playlist, track, position, volume, EQ, and visual preferences.</span></div>
+      </div><div class="formats"><span class="tag">MP3</span><span class="tag">FLAC</span><span class="tag">WAV</span><span class="tag">OGG</span><span class="tag">M4A</span><span class="tag">WMA</span><span class="tag">AAC</span><span class="tag">OPUS</span></div></div>
+      <div class="panel"><div class="kicker es">Interfaz</div><div class="kicker en">Interface</div><h3 class="es">Oscura, compacta y visual.</h3><h3 class="en">Dark, compact, and visual.</h3><div class="checks">
+        <div class="check"><span class="es"><b>Visualizador animado</b> a ambos lados de la portada.</span><span class="en"><b>Animated visualizer</b> on both sides of the artwork.</span></div>
+        <div class="check"><span class="es"><b>Vinilo animado</b> cuando la pista no trae portada propia.</span><span class="en"><b>Animated vinyl</b> when a track has no embedded artwork.</span></div>
+        <div class="check"><span class="es"><b>Tres acentos neón:</b> azul cian, verde y violeta.</span><span class="en"><b>Three neon accents:</b> cyan blue, green, and purple.</span></div>
+        <div class="check"><span class="es"><b>Transparencia ajustable</b> para adaptar la ventana a tu escritorio.</span><span class="en"><b>Adjustable transparency</b> to blend the window into your desktop.</span></div>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap"><div class="section-head"><div class="kicker es">Instalador bilingüe</div><div class="kicker en">Bilingual installer</div><h2 class="es">Instálalo. O llévatelo portable.</h2><h2 class="en">Install it. Or keep it portable.</h2><p class="sub es">El mismo paquete te deja escoger entre una instalación integrada en Windows o un ejecutable portable.</p><p class="sub en">The same package lets you choose between a Windows-integrated installation or a portable executable.</p></div><div class="split">
+      <div class="panel"><h3>💻 <span class="es">Instalación completa</span><span class="en">Full installation</span></h3><div class="checks"><div class="check"><span class="es">Instala F.Crack Player en Archivos de Programa.</span><span class="en">Installs F.Crack Player into Program Files.</span></div><div class="check"><span class="es">Crea accesos directos y desinstalador.</span><span class="en">Creates shortcuts and an uninstaller.</span></div><div class="check"><span class="es">Puede registrar formatos de audio para abrirlos con el reproductor.</span><span class="en">Can register audio formats to open with the player.</span></div></div></div>
+      <div class="panel"><h3>🎒 <span class="es">Modo portable</span><span class="en">Portable mode</span></h3><div class="checks"><div class="check"><span class="es">Extrae un ejecutable único en la carpeta que elijas.</span><span class="en">Extracts a single executable to the folder you choose.</span></div><div class="check"><span class="es">Pensado para llevarlo en USB o usarlo sin instalación tradicional.</span><span class="en">Designed for USB drives or use without a traditional install.</span></div><div class="check"><span class="es">No realiza la instalación de asociaciones del modo completo.</span><span class="en">Does not perform the full install's file-association setup.</span></div></div></div>
+    </div></div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap"><div class="panel privacy"><div class="kicker es">Música local</div><div class="kicker en">Local music</div><h2 class="es">Tu biblioteca se queda contigo.</h2><h2 class="en">Your library stays with you.</h2><p class="sub es">F.Crack Player está diseñado para reproducir archivos locales. No necesitas crear una cuenta ni subir tu música para usar el reproductor. Las preferencias y listas se guardan localmente en Windows.</p><p class="sub en">F.Crack Player is designed for local files. You do not need an account or upload your music to use the player. Preferences and playlists are stored locally on Windows.</p></div></div>
+  </section>
+
+  <section>
+    <div class="wrap download"><div><div class="kicker es">Listo para escuchar</div><div class="kicker en">Ready to listen</div><h2 class="es">Descarga F.Crack Player.</h2><h2 class="en">Download F.Crack Player.</h2><p class="es">Elige instalación completa o portable desde el instalador.</p><p class="en">Choose full installation or portable mode from the installer.</p></div><a class="btn primary" href="https://drive.google.com/file/d/1AJKtcF8FnFnocJlscRWS5nE4NRWx27hz/view?usp=drive_link" target="_blank" rel="noopener">⬇ <span class="es">Descargar desde Google Drive</span><span class="en">Download from Google Drive</span></a></div>
+  </section>
+</main>
+<footer><div class="wrap foot"><div>© 2026 <strong>Fraudy Martinez Madruga</strong>. <span class="es">Todos los derechos reservados.</span><span class="en">All rights reserved.</span></div><div><a href="README.md">README</a> · <a href="PRIVACY.md">Privacy</a> · <a href="SECURITY.md">Security</a></div></div></footer>
+<script>
+  const body=document.body, esBtn=document.getElementById('esBtn'), enBtn=document.getElementById('enBtn');
+  function setLang(lang){body.dataset.lang=lang;document.documentElement.lang=lang;esBtn.classList.toggle('active',lang==='es');enBtn.classList.toggle('active',lang==='en');localStorage.setItem('fcrack-lang',lang);document.title=lang==='es'?'F.Crack Player — Reproductor de audio para Windows':'F.Crack Player — Audio Player for Windows';}
+  esBtn.addEventListener('click',()=>setLang('es'));enBtn.addEventListener('click',()=>setLang('en'));setLang(localStorage.getItem('fcrack-lang')||((navigator.language||'').toLowerCase().startsWith('es')?'es':'en'));
+</script>
+</body>
+</html>

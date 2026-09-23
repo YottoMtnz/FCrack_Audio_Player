@@ -1,0 +1,12 @@
+name: Feature request / Sugerencia
+description: Suggest an improvement for F.Crack Player
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea / Propuesta
+      description: Explain the improvement and how it would help.
+    validations:
+      required: true

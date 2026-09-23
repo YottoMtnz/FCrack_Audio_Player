@@ -1,0 +1,11 @@
+# Local publishing helpers — never publish
+PUBLICAR_GITHUB*.bat
+LEEME_ANTES_DE_PUBLICAR.txt
+*.zip
+
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
